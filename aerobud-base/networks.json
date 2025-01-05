@@ -1,0 +1,8 @@
+{
+  "base": {
+    "SimpleERC20": {
+      "address": "0xfad8cb754230dbfd249db0e8eccb5142dd675a0d",
+      "startBlock": 14803890
+    }
+  }
+}

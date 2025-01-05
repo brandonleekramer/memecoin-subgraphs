@@ -1,0 +1,32 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: SimpleERC20
+    network: base
+    source:
+      address: "0xfad8cb754230dbfd249db0e8eccb5142dd675a0d"
+      abi: SimpleERC20
+      startBlock: 14803890
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - EIP712DomainChanged
+        - Transfer
+      abis:
+        - name: SimpleERC20
+          file: ./abis/SimpleERC20.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: EIP712DomainChanged()
+          handler: handleEIP712DomainChanged
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/simple-erc-20.ts
