@@ -1,0 +1,74 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: AgentToken
+    network: base
+    source:
+      address: "0x4f9fd6be4a90f2620860d680c0d4d5fb53d1a825"
+      abi: AgentToken
+      startBlock: 21867924
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - AutoSwapThresholdUpdated
+        - ExternalCallError
+        - InitialLiquidityAdded
+        - Initialized
+        - LimitsUpdated
+        - LiquidityPoolAdded
+        - LiquidityPoolCreated
+        - LiquidityPoolRemoved
+        - OwnershipTransferStarted
+        - OwnershipTransferred
+        - ProjectTaxBasisPointsChanged
+        - ProjectTaxRecipientUpdated
+        - RevenueAutoSwap
+        - Transfer
+        - ValidCallerAdded
+        - ValidCallerRemoved
+      abis:
+        - name: AgentToken
+          file: ./abis/AgentToken.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: AutoSwapThresholdUpdated(uint256,uint256)
+          handler: handleAutoSwapThresholdUpdated
+        - event: ExternalCallError(uint256)
+          handler: handleExternalCallError
+        - event: InitialLiquidityAdded(uint256,uint256,uint256)
+          handler: handleInitialLiquidityAdded
+        - event: Initialized(uint64)
+          handler: handleInitialized
+        - event: LimitsUpdated(uint256,uint256,uint256,uint256)
+          handler: handleLimitsUpdated
+        - event: LiquidityPoolAdded(address)
+          handler: handleLiquidityPoolAdded
+        - event: LiquidityPoolCreated(address)
+          handler: handleLiquidityPoolCreated
+        - event: LiquidityPoolRemoved(address)
+          handler: handleLiquidityPoolRemoved
+        - event: OwnershipTransferStarted(indexed address,indexed address)
+          handler: handleOwnershipTransferStarted
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: ProjectTaxBasisPointsChanged(uint256,uint256,uint256,uint256)
+          handler: handleProjectTaxBasisPointsChanged
+        - event: ProjectTaxRecipientUpdated(address)
+          handler: handleProjectTaxRecipientUpdated
+        - event: RevenueAutoSwap()
+          handler: handleRevenueAutoSwap
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+        - event: ValidCallerAdded(bytes32)
+          handler: handleValidCallerAdded
+        - event: ValidCallerRemoved(bytes32)
+          handler: handleValidCallerRemoved
+      file: ./src/agent-token.ts
