@@ -1,0 +1,56 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: OptimismMintableERC20
+    network: base
+    source:
+      address: "0x0b3e328455c4059EEb9e3f84b5543F74E24e7E1b"
+      abi: OptimismMintableERC20
+      startBlock: 11817009
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - Burn
+        - EnforcedOptionSet
+        - Mint
+        - MsgInspectorSet
+        - OFTReceived
+        - OFTSent
+        - OwnershipTransferred
+        - PeerSet
+        - PreCrimeSet
+        - Transfer
+      abis:
+        - name: OptimismMintableERC20
+          file: ./abis/OptimismMintableERC20.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: Burn(indexed address,uint256)
+          handler: handleBurn
+        - event: EnforcedOptionSet((uint32,uint16,bytes)[])
+          handler: handleEnforcedOptionSet
+        - event: Mint(indexed address,uint256)
+          handler: handleMint
+        - event: MsgInspectorSet(address)
+          handler: handleMsgInspectorSet
+        - event: OFTReceived(indexed bytes32,uint32,indexed address,uint256)
+          handler: handleOFTReceived
+        - event: OFTSent(indexed bytes32,uint32,indexed address,uint256,uint256)
+          handler: handleOFTSent
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: PeerSet(uint32,bytes32)
+          handler: handlePeerSet
+        - event: PreCrimeSet(address)
+          handler: handlePreCrimeSet
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/optimism-mintable-erc-20.ts
