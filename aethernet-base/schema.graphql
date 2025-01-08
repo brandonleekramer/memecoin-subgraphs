@@ -1,0 +1,49 @@
+type Approval @entity(immutable: true) {
+  id: Bytes!
+  owner: Bytes! # address
+  spender: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type BeliefToken_ClaimAirdropWave @entity(immutable: true) {
+  id: Bytes!
+  waveId: String! # string
+  amount: BigInt! # uint256
+  merkleProof: [Bytes!]! # bytes32[]
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type BeliefToken_EnableAirdropWave @entity(immutable: true) {
+  id: Bytes!
+  waveId: String! # string
+  merkleRoot: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type BeliefToken_MintClaimableReward @entity(immutable: true) {
+  id: Bytes!
+  recipient: Bytes! # address
+  rewardType: Int! # uint8
+  userId: String! # string
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Transfer @entity(immutable: true) {
+  id: Bytes!
+  from: Bytes! # address
+  to: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
