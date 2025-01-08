@@ -1,0 +1,50 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Cookie
+    network: base
+    source:
+      address: "0xc0041ef357b183448b235a8ea73ce4e4ec8c265f"
+      abi: Cookie
+      startBlock: 15313971
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - EnforcedOptionSet
+        - MsgInspectorSet
+        - OFTReceived
+        - OFTSent
+        - OwnershipTransferred
+        - PeerSet
+        - PreCrimeSet
+        - Transfer
+      abis:
+        - name: Cookie
+          file: ./abis/Cookie.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: EnforcedOptionSet((uint32,uint16,bytes)[])
+          handler: handleEnforcedOptionSet
+        - event: MsgInspectorSet(address)
+          handler: handleMsgInspectorSet
+        - event: OFTReceived(indexed bytes32,uint32,indexed address,uint256)
+          handler: handleOFTReceived
+        - event: OFTSent(indexed bytes32,uint32,indexed address,uint256,uint256)
+          handler: handleOFTSent
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: PeerSet(uint32,bytes32)
+          handler: handlePeerSet
+        - event: PreCrimeSet(address)
+          handler: handlePreCrimeSet
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/cookie.ts
