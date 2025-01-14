@@ -1,0 +1,150 @@
+type Approval @entity(immutable: true) {
+  id: Bytes!
+  owner: Bytes! # address
+  spender: Bytes! # address
+  value: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type AutoSwapThresholdUpdated @entity(immutable: true) {
+  id: Bytes!
+  oldThreshold: BigInt! # uint256
+  newThreshold: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ExternalCallError @entity(immutable: true) {
+  id: Bytes!
+  identifier: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type InitialLiquidityAdded @entity(immutable: true) {
+  id: Bytes!
+  tokenA: BigInt! # uint256
+  tokenB: BigInt! # uint256
+  lpToken: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Initialized @entity(immutable: true) {
+  id: Bytes!
+  version: BigInt! # uint64
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type LimitsUpdated @entity(immutable: true) {
+  id: Bytes!
+  oldMaxTokensPerTransaction: BigInt! # uint256
+  newMaxTokensPerTransaction: BigInt! # uint256
+  oldMaxTokensPerWallet: BigInt! # uint256
+  newMaxTokensPerWallet: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type LiquidityPoolAdded @entity(immutable: true) {
+  id: Bytes!
+  addedPool: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type LiquidityPoolCreated @entity(immutable: true) {
+  id: Bytes!
+  addedPool: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type LiquidityPoolRemoved @entity(immutable: true) {
+  id: Bytes!
+  removedPool: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OwnershipTransferStarted @entity(immutable: true) {
+  id: Bytes!
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OwnershipTransferred @entity(immutable: true) {
+  id: Bytes!
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ProjectTaxBasisPointsChanged @entity(immutable: true) {
+  id: Bytes!
+  oldBuyBasisPoints: BigInt! # uint256
+  newBuyBasisPoints: BigInt! # uint256
+  oldSellBasisPoints: BigInt! # uint256
+  newSellBasisPoints: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ProjectTaxRecipientUpdated @entity(immutable: true) {
+  id: Bytes!
+  treasury: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type RevenueAutoSwap @entity(immutable: true) {
+  id: Bytes!
+
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Transfer @entity(immutable: true) {
+  id: Bytes!
+  from: Bytes! # address
+  to: Bytes! # address
+  value: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ValidCallerAdded @entity(immutable: true) {
+  id: Bytes!
+  addedValidCaller: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ValidCallerRemoved @entity(immutable: true) {
+  id: Bytes!
+  removedValidCaller: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
