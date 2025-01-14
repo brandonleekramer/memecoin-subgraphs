@@ -1,0 +1,8 @@
+{
+  "base": {
+    "TransparentUpgradeableProxy": {
+      "address": "0x94Bf9622348Cf5598D9A491Fa809194Cf85A0D61",
+      "startBlock": 11843385
+    }
+  }
+}
