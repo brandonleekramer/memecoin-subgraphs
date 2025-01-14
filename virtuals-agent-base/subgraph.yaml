@@ -27,3 +27,53 @@ dataSources:
         - event: Upgraded(indexed address)
           handler: handleUpgraded
       file: ./src/transparent-upgradeable-proxy.ts
+  - kind: ethereum
+    name: AgentFactoryV2
+    network: base
+    source:
+      address: "0x5c621b19c9547274b0105a1f8a84139c84b755b7"
+      abi: AgentFactoryV2
+      startBlock: 19326765
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ApplicationThresholdUpdated
+        - GovUpdated
+        - ImplContractsUpdated
+        - Initialized
+        - NewApplication
+        - NewPersona
+        - Paused
+        - RoleAdminChanged
+        - RoleGranted
+        - RoleRevoked
+        - Unpaused
+      abis:
+        - name: AgentFactoryV2
+          file: ./abis/AgentFactoryV2.json
+      eventHandlers:
+        - event: ApplicationThresholdUpdated(uint256)
+          handler: handleApplicationThresholdUpdated
+        - event: GovUpdated(address)
+          handler: handleGovUpdated
+        - event: ImplContractsUpdated(address,address)
+          handler: handleImplContractsUpdated
+        - event: Initialized(uint64)
+          handler: handleInitialized
+        - event: NewApplication(uint256)
+          handler: handleNewApplication
+        - event: NewPersona(uint256,address,address,address,address,address)
+          handler: handleNewPersona
+        - event: Paused(address)
+          handler: handlePaused
+        - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
+          handler: handleRoleAdminChanged
+        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleGranted
+        - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleRevoked
+        - event: Unpaused(address)
+          handler: handleUnpaused
+      file: ./src/agent-factory-v-2.ts

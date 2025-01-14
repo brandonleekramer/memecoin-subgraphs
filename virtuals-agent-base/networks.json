@@ -3,6 +3,9 @@
     "TransparentUpgradeableProxy": {
       "address": "0x94Bf9622348Cf5598D9A491Fa809194Cf85A0D61",
       "startBlock": 11843385
+    },
+    "AgentFactoryV2": {
+      "address": "0x5c621b19c9547274b0105a1f8a84139c84b755b7"
     }
   }
 }
